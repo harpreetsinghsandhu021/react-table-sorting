@@ -1,0 +1,124 @@
+.table__container {
+  --border: 1px solid #dedede;
+  --danger: #e53935;
+  --danger-light: #ffe8e4;
+  --gray-100: #f6f6f6;
+  --gray-200: #c5c5c5;
+  --padding-side: 0.875rem;
+  --warning: #ffdc00;
+  --warning-light: #fffae7;
+  --white: #fefefe;
+
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.table__button--sort {
+  align-items: center;
+  background-color: transparent;
+  border: 0 none;
+  display: grid;
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  grid-template-columns: auto 1fr;
+  text-align: inherit;
+  width: 100%;
+  
+  .sort-icon {
+    height: 1rem;
+  }
+}
+
+.sort-icon {
+  
+  .sort-icon__triangle--bottom,
+  .sort-icon__triangle--top {
+    opacity: 0.25;
+  }
+
+  &.asc {
+    .sort-icon__triangle--top {
+      opacity: 1;
+    }
+  }
+
+  &.desc {
+    .sort-icon__triangle--bottom {
+      opacity: 1;
+    }
+  }
+}
+
+.table__th,
+.table__td {
+  padding: 1rem 0.5rem 0.75rem 0;
+  text-align: start;
+  text-transform: capitalize;
+}
+
+.table__td {
+  font-size: 0.875rem;
+  height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table__td {
+  padding: 0;
+  
+  &.warning {
+    color: var(--danger);
+  }
+  &:first-child {
+    padding-left: 1rem;   
+  }
+}
+
+.table__row--body:hover {
+  .table__td {
+    background-color: rgba(0,0,0,0.1);
+    transition: background-color 0.15s ease-in-out;
+  }
+}
+
+.table__th {
+  background-color: var(--gray-200);
+  position: sticky;
+  top: 0;
+
+  &:first-child {
+    padding: 0 var(--padding-side);
+  }
+}
+
+.table__row--body {
+  background-color: var(--white);
+
+  &:nth-child(even) {
+    background-color: var(--gray-100);
+  }
+  
+  &[data-status-indicator = 'danger'] {
+    background-color: var(--danger-light);
+
+    .table__td {
+      background-color: var(--danger-light);
+    }
+  }
+
+  &[data-status-indicator = 'warning'] {
+    background-color: var(--warning-light);
+
+    .table__td {
+      background-color: var(--warning-light);
+    }
+  }
+}
+
+.table__table {
+  border-collapse: collapse;
+  min-width: 100%;
+  position: relative;
+}
